@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "sqlhydra.sqlite": {
+      "version": "1.2.1",
+      "commands": [
+        "sqlhydra-sqlite"
+      ]
+    }
+  }
+}

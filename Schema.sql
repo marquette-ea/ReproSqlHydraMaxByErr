@@ -1,0 +1,7 @@
+
+
+CREATE TABLE TestTable (
+  Id INT NOT NULL,
+  Callsign TEXT NOT NULL,
+  CONSTRAINT PK_TestTable PRIMARY KEY (Id)
+);
