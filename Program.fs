@@ -11,9 +11,6 @@ let openSqlite () = task {
   let conn = new Microsoft.Data.Sqlite.SqliteConnection("")
   do! conn.OpenAsync ()
 
-  use attachDbo = conn.CreateCommand(CommandText = "attach database '' as 'dbo'")
-  let _ = attachDbo.ExecuteNonQuery()
-
   use createSchema = conn.CreateCommand(CommandText = schemaStr)
   let _ = createSchema.ExecuteNonQuery()
   return conn
