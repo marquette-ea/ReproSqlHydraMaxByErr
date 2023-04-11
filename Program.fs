@@ -7,7 +7,7 @@ open SqlHydra.Query
 let schemaStr = 
   File.ReadAllText (__SOURCE_DIRECTORY__ + @"\Schema.sql")
 
-let openSqlite () = task {
+let openEmptyTestDatabase () = task {
   let conn = new Microsoft.Data.Sqlite.SqliteConnection("")
   do! conn.OpenAsync ()
 
@@ -30,7 +30,7 @@ let getMax db = task {
 }
 
 let thisWorks () = task {
-  use! db = openSqlite ()
+  use! db = openEmptyTestDatabase ()
   let! _ = insertTask (sharedSqlite db) {
     into Schema.main.TestTable   
     entity { Id = 0; Callsign = "Name" }
@@ -40,7 +40,7 @@ let thisWorks () = task {
 }
 
 let demonstrateProblem () = task {
-  use! db = openSqlite ()
+  use! db = openEmptyTestDatabase ()
 
   return! getMax db
 }
